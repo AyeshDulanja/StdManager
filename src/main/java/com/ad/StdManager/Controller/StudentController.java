@@ -21,7 +21,6 @@ public class StudentController {
     }
 
     //REST API
-
     //Post Data
     @PostMapping // http://localhost:8080/api/students
     public ResponseEntity<Student> saveStudent(@RequestBody Student student){
@@ -38,7 +37,5 @@ public class StudentController {
     @GetMapping("{id}") // http://localhost:8080/api/students/1
     public ResponseEntity<Student> getStudentById(@PathVariable("id") long id){
         return new ResponseEntity<Student>(studentService.getStudentById(id),HttpStatus.OK);
-
     }
-
 }
