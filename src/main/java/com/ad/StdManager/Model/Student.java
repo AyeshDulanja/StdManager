@@ -6,16 +6,16 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "Students")
+@Table(name = "students")
 public class Student {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
 
-    @Column(name = "First_Name", nullable = false)
-    private String Fname;
+    @Column(name = "first_name", nullable = false)
+    private String fname;
 
-    @Column(name = "Last_Name", nullable = false)
-    private String Lname;
+    @Column(name = "last_name")
+    private String lname;
 }
