@@ -38,5 +38,22 @@ public class StudentServiceImpl implements StudentService {
         }else {
             throw new NotFoundException("student","id",id);
         }
+
+//        return studentRepository.findById(id).orElseThrow(
+//                () -> new NotFoundException("Student", "Id", id));
+    }
+
+    @Override
+    public Student updateStudent(Student student, long id) {
+        //Check given ID is exited
+        Student exitingStudent = studentRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Student", "Id", id));
+
+        exitingStudent.setFname(student.getFname());
+        exitingStudent.setLname(student.getLname());
+
+        //Save Student
+        studentRepository.save(exitingStudent);
+        return exitingStudent;
     }
 }

@@ -21,21 +21,30 @@ public class StudentController {
     }
 
     //REST API
-    //Post Data
-    @PostMapping // http://localhost:8080/api/students
+
+    //Post Entity
+    @PostMapping // http://localhost:8080/api/students   -   POST
     public ResponseEntity<Student> saveStudent(@RequestBody Student student){
         return new ResponseEntity<Student>(studentService.saveStudent(student), HttpStatus.CREATED);
     }
 
-    //get all data
-    @GetMapping // http://localhost:8080/api/students
+    //Get all Entities
+    @GetMapping // http://localhost:8080/api/students   -   GET
     public List<Student> getAllStudents(){
         return studentService.getAllStudents();
     }
 
-    //get student by id
-    @GetMapping("{id}") // http://localhost:8080/api/students/1
+    //Get Entity by ID
+    @GetMapping("{id}") // http://localhost:8080/api/students/1   -   GET
     public ResponseEntity<Student> getStudentById(@PathVariable("id") long id){
         return new ResponseEntity<Student>(studentService.getStudentById(id),HttpStatus.OK);
     }
+
+    //Update Entity
+    @PutMapping("{id}") // http://localhost:8080/api/students/1   -   PUT
+    public ResponseEntity<Student> updateStudent(@PathVariable("id") long id,@RequestBody Student student){
+        return new ResponseEntity<Student>(studentService.updateStudent(student,id),HttpStatus.OK);
+    }
+
+    //Delete Entity
 }
