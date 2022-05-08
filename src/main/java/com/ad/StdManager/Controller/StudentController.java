@@ -20,8 +20,6 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    //REST API
-
     //Post Entity
     @PostMapping // http://localhost:8080/api/students   -   POST
     public ResponseEntity<Student> saveStudent(@RequestBody Student student){
