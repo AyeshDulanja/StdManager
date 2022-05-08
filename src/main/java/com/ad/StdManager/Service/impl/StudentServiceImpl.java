@@ -56,4 +56,13 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(exitingStudent);
         return exitingStudent;
     }
+
+    @Override
+    public void deleteStudent(long id) {
+        //Check given ID is exited
+        studentRepository.findById(id).orElseThrow(
+                ()-> new NotFoundException("Student", "Id", id));
+        //Delete Student
+        studentRepository.deleteById(id);
+    }
 }
